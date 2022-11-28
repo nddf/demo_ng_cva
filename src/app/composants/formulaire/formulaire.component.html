@@ -1,0 +1,13 @@
+
+<input type="checkbox" [(ngModel)]="estAdresseAQuebec">
+
+<form (ngSubmit)="soumettre()" [formGroup]="form">
+  prénom: <input type="text" formControlName="prenom"><br>
+  nom: <input type="text" formControlName="nom"><br>
+  adresse: <br><adresse formControlName="adresse" [adresseAQuebec]="estAdresseAQuebec"></adresse>
+  <button type="submit">Soumettre</button>
+</form>
+
+<pre>
+  {{ log }}
+</pre>
