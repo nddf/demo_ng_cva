@@ -1,0 +1,22 @@
+<div [formGroup]="adresseForm">
+  porte: <input type="number" formControlName="porte" (blur)="onTouched()"><br>
+  <p>
+  {{ adresseForm.controls['porte'].errors | json }}
+  </p>
+  numero civique: <entree-texte formControlName="numeroCivique" (blur)="onTouched()"></entree-texte><br>
+  <p>
+  {{ adresseForm.controls['numeroCivique'].errors | json }}
+  </p>
+  rue: <input type="text" formControlName="rue" (blur)="onTouched()"><br>
+  <p>
+  {{ adresseForm.controls['rue'].errors | json }}
+  </p>
+  code postal: <input type="text" formControlName="codePostal" (blur)="onTouched()"><br>
+  <p>
+  {{ adresseForm.controls['codePostal'].errors | json }}
+  </p>
+  ville: <input type="text" formControlName="ville" (blur)="onTouched()"><br>
+  <p>
+  {{ adresseForm.controls['ville'].errors | json }}
+  </p>
+</div>
