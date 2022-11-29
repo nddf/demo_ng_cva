@@ -4,11 +4,14 @@ import { AbstractControl, ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_V
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EntreeTexteComponent } from '../commun/entree-texte/entree-texte.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @Component({
   selector: 'adresse',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, EntreeTexteComponent],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, EntreeTexteComponent, MatFormFieldModule, MatInputModule ],
   templateUrl: './adresse.component.html',
   styleUrls: ['./adresse.component.css'],
   providers: [
@@ -52,27 +55,22 @@ export class AdresseComponent implements ControlValueAccessor, Validator, OnDest
       return null;
     }
 
-    let errors: any = {};
-
-    errors = this.ajouterErreursControle(errors, "porte");
-    errors = this.ajouterErreursControle(errors, "numeroCivique");
-    errors = this.ajouterErreursControle(errors, "rue");
-    errors = this.ajouterErreursControle(errors, "codePostal");
-    errors = this.ajouterErreursControle(errors, "ville");
-
-    return errors;
+    let erreurs: any = {};
+    erreurs = this.ajouterErreursControle(erreurs, "porte");
+    erreurs = this.ajouterErreursControle(erreurs, "numeroCivique");
+    erreurs = this.ajouterErreursControle(erreurs, "rue");
+    erreurs = this.ajouterErreursControle(erreurs, "codePostal");
+    erreurs = this.ajouterErreursControle(erreurs, "ville");
+    return erreurs;
   }
 
   ajouterErreursControle(allErrors: any, controlName:string) {
 
     const errors = {...allErrors};
-
     const controlErrors = this.adresseForm.controls[controlName].errors;
-
     if (controlErrors) {
       errors[controlName] = controlErrors;
     }
-
     return errors;
   }
 

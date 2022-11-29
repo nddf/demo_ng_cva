@@ -1,22 +1,7 @@
 <div [formGroup]="adresseForm">
-  porte: <input type="number" formControlName="porte" (blur)="onTouched()"><br>
-  <p>
-  {{ adresseForm.controls['porte'].errors | json }}
-  </p>
-  numero civique: <entree-texte formControlName="numeroCivique" (blur)="onTouched()"></entree-texte><br>
-  <p>
-  {{ adresseForm.controls['numeroCivique'].errors | json }}
-  </p>
-  rue: <input type="text" formControlName="rue" (blur)="onTouched()"><br>
-  <p>
-  {{ adresseForm.controls['rue'].errors | json }}
-  </p>
-  code postal: <input type="text" formControlName="codePostal" (blur)="onTouched()"><br>
-  <p>
-  {{ adresseForm.controls['codePostal'].errors | json }}
-  </p>
-  ville: <input type="text" formControlName="ville" (blur)="onTouched()"><br>
-  <p>
-  {{ adresseForm.controls['ville'].errors | json }}
-  </p>
+  <entree-texte formControlName="porte" (blur)="onTouched()" libelle="Porte"></entree-texte><br>
+  <entree-texte formControlName="numeroCivique" (blur)="onTouched()" libelle="Numero civique"></entree-texte><br>
+  <entree-texte formControlName="rue" (blur)="onTouched()" libelle="Rue"></entree-texte><br>
+  <entree-texte formControlName="codePostal" (blur)="onTouched()" libelle="Code postal"></entree-texte><br>
+  <entree-texte formControlName="ville" (blur)="onTouched()" libelle="Ville"></entree-texte><br>
 </div>

@@ -1,12 +1,15 @@
 
-Forcer adresse à Québec: <input type="checkbox" [(ngModel)]="estAdresseAQuebec">
+Forcer adresse à Québec:
 
-<form (ngSubmit)="soumettre()" [formGroup]="form">
-  prénom: <input type="text" formControlName="prenom"><br>
-  nom: <input type="text" formControlName="nom"><br>
-  adresse: <br><adresse formControlName="adresse" [adresseAQuebec]="estAdresseAQuebec"></adresse>
-  <button type="submit">Soumettre</button>
-</form>
+<input type="checkbox" [(ngModel)]="estAdresseAQuebec" libelle="AvecNgModel">
+<p>estAdresseAQuebec: {{ estAdresseAQuebec }}</p>
+
+<div [formGroup]="form">
+  <entree-texte formControlName="prenom" libelle="Prénom"></entree-texte><br>
+  <entree-texte formControlName="nom" libelle="Nom"></entree-texte><br>
+  <adresse formControlName="adresse" [adresseAQuebec]="estAdresseAQuebec"></adresse>
+  <button (clic)="soumettre()" type="button">Soumettre</button>
+</div>
 
 <pre>
   {{ log }}

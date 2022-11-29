@@ -9,7 +9,7 @@ import { EntreeTexteComponent } from '../commun/entree-texte/entree-texte.compon
 @Component({
   selector: 'formulaire',
   standalone: true,
-  imports: [CommonModule, FormsModule, AdresseComponent, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, AdresseComponent, ReactiveFormsModule, EntreeTexteComponent],
   templateUrl: './formulaire.component.html',
   styleUrls: ['./formulaire.component.css'],
 
