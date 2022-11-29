@@ -1,7 +1,6 @@
-<mat-form-field>
-  <input #input type="text"
-  [attr.disabled]="isDisabled ? true : null"
-  (blur)="onTouched()"
-  (input)="markAsTouched();onChanged($any($event.target).value);"
-  [(ngModel)]="entreeTexte" matInput>
+<mat-form-field *ngIf="controle">
+  <input #input
+         type="text"
+         [formControl]="controle"
+         matInput>
 </mat-form-field>

@@ -31,10 +31,9 @@ export class FormulaireComponent {
     this.form = fb.group({
       nom: this.fb.control('', []),
       prenom: this.fb.control('', []),
+      adresse: this.fb.control(null, [])
     });
-    this.form.addControl('adresse', new FormControl(null, []));
   }
-
 
   soumettre() {
   }

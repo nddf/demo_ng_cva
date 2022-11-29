@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { EntreeTexteComponent } from './composants/commun/entree-texte/entree-texte.component';
 import { FormulaireComponent } from './composants/formulaire/formulaire.component';
 
 @Component({
@@ -7,11 +9,13 @@ import { FormulaireComponent } from './composants/formulaire/formulaire.componen
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [
-    FormulaireComponent
+    FormulaireComponent,
+    EntreeTexteComponent,
+    FormsModule
   ]
 })
 export class AppComponent {
 
-
+  entreeTexte: string = '';
 
 }
