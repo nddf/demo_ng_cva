@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>{{ libelle }}</mat-label>
-  <input matInput [formControl]="controle">
+  <input type="text" matInput [formControl]="controle" [mask]="masque" [triggerOnMaskChange]="true">
   <mat-error *ngIf="controle.invalid">
     {{ controle.errors | json }}
   </mat-error>

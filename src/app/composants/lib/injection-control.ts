@@ -3,9 +3,9 @@ import { FormControl, FormControlDirective, FormControlName, FormGroupDirective,
 
 export function obtenirFormControl(injector: Injector, controlDefaut: FormControl) {
   let controle: FormControl;
-  const ngControl = injector.get(NgControl);
+  const ngControl = injector.get<NgControl>(NgControl, undefined, {self: true});
   if (ngControl instanceof FormControlName) {
-    controle = injector.get(FormGroupDirective).getControl(ngControl);
+    controle = injector.get<FormGroupDirective>(FormGroupDirective, undefined, {self: true}).getControl(ngControl);
   }
   else if (ngControl instanceof FormControlDirective) {
     controle = (ngControl as FormControlDirective).form as FormControl;

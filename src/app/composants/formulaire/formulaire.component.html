@@ -2,7 +2,6 @@
 Forcer adresse à Québec:
 
 <input type="checkbox" [(ngModel)]="estAdresseAQuebec" libelle="AvecNgModel">
-<p>estAdresseAQuebec: {{ estAdresseAQuebec }}</p>
 
 <div [formGroup]="form">
   <entree-texte formControlName="prenom" libelle="Prénom"></entree-texte><br>
@@ -14,3 +13,7 @@ Forcer adresse à Québec:
 <pre>
   {{ log }}
 </pre>
+
+
+<!-- <adresse [(ngModel)]="ngModelAdresse" [adresseAQuebec]="estAdresseAQuebec"></adresse>
+<p>{{ ngModelAdresse | json }}</p> -->

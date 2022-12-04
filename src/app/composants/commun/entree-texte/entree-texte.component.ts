@@ -6,11 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { obtenirFormControl } from '../../lib/injection-control';
 import { Subscription } from 'rxjs';
 import { OnDestroy } from '@angular/core';
+import { NgxMaskModule } from 'ngx-mask';
 
 @Component({
   selector: 'entree-texte[formControlName], entree-texte[formControl], entree-texte[ngModel]',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, EntreeTexteComponent],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, EntreeTexteComponent, NgxMaskModule],
   templateUrl: './entree-texte.component.html',
   styleUrls: ['./entree-texte.component.css'],
   providers: [
@@ -30,6 +31,7 @@ import { OnDestroy } from '@angular/core';
 export class EntreeTexteComponent implements ControlValueAccessor, Validator, AfterViewInit, OnDestroy {
 
     @Input()libelle: string = '';
+    @Input()masque = '';
 
     private abonnements: Subscription[] = [];
     public onTouched = () => {};
@@ -38,9 +40,7 @@ export class EntreeTexteComponent implements ControlValueAccessor, Validator, Af
     controle: FormControl = this.formBuilder.control('');
 
     public constructor(private injector: Injector,
-                       private formBuilder: FormBuilder) {
-
-    }
+                       private formBuilder: FormBuilder) { }
 
     ngAfterViewInit() {
       this.controle = obtenirFormControl(this.injector, this.controle);

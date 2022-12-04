@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { EntreeTexteComponent } from '../commun/entree-texte/entree-texte.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ValidationEntreeTexte } from 'src/app/validations/validations-entree-texte';
 
 
 @Component({
@@ -102,10 +103,5 @@ export class AdresseComponent implements ControlValueAccessor, Validator, OnDest
     isDisabled ? this.adresseForm.disable() : this.adresseForm.enable();
   }
 
-  validateurAQuebec = (ctrl: AbstractControl) => {
-    if (ctrl.value !== 'Québec') {
-      return {'AdresseDoitEtreAQuebec': true}
-    }
-    return null;
-  }
+  validateurAQuebec = ValidationEntreeTexte.validerEgalite('Québec');
 }
