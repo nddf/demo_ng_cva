@@ -66,7 +66,7 @@ export class EntreeTexteComponent implements ControlValueAccessor, Validator, On
     }
 
     surChangement(event: Event) {
-      this.valeur = (event.target as HTMLInputElement).value
-      this.onChanged(this.valeur);
+      var valeur = (event.target as HTMLInputElement).value
+      this.onChanged(valeur);
     }
 }
