@@ -1,0 +1,16 @@
+<form #formulaire="ngForm">
+  <table>
+    <tr>
+      <td><label for="prenom">Prénom: </label></td>
+      <td><input type="text" [(ngModel)]="modele.prenom" name="prenom" id="prenom"></td>
+    </tr>
+    <tr>
+      <td><label for="nom">Nom: </label></td>
+      <td><input type="text" [(ngModel)]="modele.nom" name="nom" id="nom"></td>
+    </tr>
+  </table>
+</form>
+
+<p>
+  {{ formulaire.value | json }}
+</p>

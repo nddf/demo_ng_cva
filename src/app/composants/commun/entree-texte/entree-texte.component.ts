@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, forwardRef, Injector, Input, OnInit, Self, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormBuilder, FormControl, FormControlDirective, FormControlName, FormGroupDirective, FormsModule, NgControl, NgModel, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator } from '@angular/forms';
+import { Component, ElementRef, forwardRef, Injector, Input, OnInit, Self, ViewChild } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, FormControl, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +15,6 @@ import { NgxMaskModule } from 'ngx-mask';
   templateUrl: './entree-texte.component.html',
   styleUrls: ['./entree-texte.component.css'],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => EntreeTexteComponent),
@@ -28,34 +27,30 @@ import { NgxMaskModule } from 'ngx-mask';
     }
   ]
 })
-export class EntreeTexteComponent implements ControlValueAccessor, Validator, AfterViewInit, OnDestroy {
-
+export class EntreeTexteComponent implements ControlValueAccessor, Validator, OnDestroy {
     @Input()libelle: string = '';
     @Input()masque = '';
 
+    @ViewChild('entree') entree!: ElementRef;
+
     private abonnements: Subscription[] = [];
     public onTouched = () => {};
+    public onChanged = (val: any) => {};
     isDisabled: boolean = false;
+    valeur: string | null = null;
 
-    controle: FormControl = this.formBuilder.control('');
-
-    public constructor(private injector: Injector,
-                       private formBuilder: FormBuilder) { }
-
-    ngAfterViewInit() {
-      this.controle = obtenirFormControl(this.injector, this.controle);
-    }
+    public constructor() { }
 
     validate(control: AbstractControl<any, any>): ValidationErrors | null {
       return null;
     }
 
     writeValue(obj: any): void {
-      obj && this.controle.setValue(obj, {emitEvent: false});
+      this.valeur = obj;
     }
 
     registerOnChange(fn: any): void {
-      this.abonnements.push(this.controle.valueChanges.subscribe(fn));
+      this.onChanged = fn;
     }
 
     registerOnTouched(fn: any): void {
@@ -63,10 +58,15 @@ export class EntreeTexteComponent implements ControlValueAccessor, Validator, Af
     }
 
     setDisabledState(disabled: boolean): void {
-      disabled ? this.controle.disable : this.controle.enable();
+      this.isDisabled = disabled;
     }
 
     ngOnDestroy() {
       this.abonnements.forEach(a => a && !a.closed && a.unsubscribe());
+    }
+
+    surChangement(event: Event) {
+      this.valeur = (event.target as HTMLInputElement).value
+      this.onChanged(this.valeur);
     }
 }

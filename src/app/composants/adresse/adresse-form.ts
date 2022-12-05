@@ -6,9 +6,9 @@ export class AdresseForm extends FormGroup {
     super({
         porte: new FormControl<number | null>(null, []),
         numeroCivique: new FormControl<string | null>(null, [Validators.pattern('[0-9]+[a-zA-Z]?')]),
-        rue: new FormControl<string>('', []),
-        codePostal: new FormControl<string>('', []),
-        ville: new FormControl<string>('', [])
+        rue: new FormControl<string|null>('', []),
+        codePostal: new FormControl<string|null>('', []),
+        ville: new FormControl<string|null>('', [])
       });
   }
 }

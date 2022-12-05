@@ -1,7 +1,12 @@
 <div [formGroup]="adresseForm">
   <entree-texte formControlName="porte" (blur)="onTouched()" libelle="Porte"></entree-texte><br>
+    {{ adresseForm.get('porte')?.errors | json }}
   <entree-texte formControlName="numeroCivique" (blur)="onTouched()" libelle="Numero civique"></entree-texte><br>
+  {{ adresseForm.get('numeroCivique')?.errors | json }}
   <entree-texte formControlName="rue" (blur)="onTouched()" libelle="Rue"></entree-texte><br>
+  {{ adresseForm.get('rue')?.errors | json }}
   <entree-texte formControlName="codePostal" (blur)="onTouched()" libelle="Code postal" masque="S0S 0S0"></entree-texte><br>
+  {{ adresseForm.get('codePostal')?.errors | json }}
   <entree-texte formControlName="ville" (blur)="onTouched()" libelle="Ville"></entree-texte><br>
+  {{ adresseForm.get('ville')?.errors | json }}
 </div>

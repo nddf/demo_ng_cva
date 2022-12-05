@@ -26,14 +26,15 @@ export class FormulaireComponent {
     prenom: ${this.form.controls['prenom'].value}
     adresse: ${JSON.stringify(this.form.controls['adresse'].value)}
     estInvalide: ${!this.form.valid}
-    erreurs: ${JSON.stringify(getFormValidationErrors(this.form), null, 2)}`
+    erreurs: ${JSON.stringify(getFormValidationErrors(this.form), null, 2)}
+    `;
   };
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       nom: this.fb.control('', []),
       prenom: this.fb.control('', []),
-      adresse: this.fb.control(null, [])
+      adresse: this.fb.control({porte: null, numeroCivique: 'abc', rue: null, codePostal: null, ville: null}, [])
     });
   }
 

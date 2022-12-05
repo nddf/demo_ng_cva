@@ -80,7 +80,6 @@ export class AdresseComponent implements ControlValueAccessor, Validator, OnDest
   }
 
   ngOnInit(): void {
-    this.adresseForm.updateValueAndValidity();
   }
 
   ngOnDestroy(): void {

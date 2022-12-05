@@ -1,7 +1,9 @@
-<mat-form-field>
-  <mat-label>{{ libelle }}</mat-label>
-  <input type="text" matInput [formControl]="controle" [mask]="masque" [triggerOnMaskChange]="true">
-  <mat-error *ngIf="controle.invalid">
-    {{ controle.errors | json }}
-  </mat-error>
-</mat-form-field>
+{{ libelle }}
+  <input [(ngModel)]="valeur"
+         type="text"
+         matInput
+         [mask]="masque"
+         [triggerOnMaskChange]="true"
+         (input)="surChangement($event)"
+         (blur)="onTouched()"
+         [disabled]="isDisabled">
