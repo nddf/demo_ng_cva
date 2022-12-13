@@ -27,7 +27,7 @@ import { NgxMaskModule } from 'ngx-mask';
     }
   ]
 })
-export class EntreeTexteComponent implements ControlValueAccessor, Validator, OnDestroy {
+export class EntreeTexteComponent implements ControlValueAccessor, Validator, OnInit, OnDestroy {
     @Input()libelle: string = '';
     @Input()masque = '';
 
@@ -36,13 +36,24 @@ export class EntreeTexteComponent implements ControlValueAccessor, Validator, On
     private abonnements: Subscription[] = [];
     public onTouched = () => {};
     public onChanged = (val: any) => {};
+    public registerOnChanged = () => {};
     isDisabled: boolean = false;
     valeur: string | null = null;
+    controle: any;
 
-    public constructor() { }
+    public constructor(private injector: Injector) { }
+
+    ngOnInit(): void {
+      this.controle = obtenirFormControl(this.injector);
+      let t = 1;
+    }
 
     validate(control: AbstractControl<any, any>): ValidationErrors | null {
       return null;
+    }
+
+    registerOnValidatorChange(fn: () => void): void {
+      this.registerOnChanged = fn;
     }
 
     writeValue(obj: any): void {

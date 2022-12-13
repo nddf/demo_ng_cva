@@ -1,9 +1,12 @@
 {{ libelle }}
   <input [(ngModel)]="valeur"
          type="text"
-         matInput
          [mask]="masque"
          [triggerOnMaskChange]="true"
+         [showMaskTyped]= "true"
          (input)="surChangement($event)"
          (blur)="onTouched()"
-         [disabled]="isDisabled">
+         [disabled]="isDisabled"/>
+  <br/>
+
+  {{ controle.errors | json}}

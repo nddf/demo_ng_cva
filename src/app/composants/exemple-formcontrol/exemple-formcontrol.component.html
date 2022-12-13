@@ -1,0 +1,55 @@
+Hello&nbsp;<input type="text" [formControl]="formCtrl">!
+<button type="button" (click)="formCtrl.reset()">Réinitialiser</button>
+<button type="button" (click)="formCtrl.setValue('World', {emitEvent: false})">Assigner 'World'</button><br>
+
+ModifierValidationSync: <input type="checkbox" (input)="modifierValidationSync(($event.target))">
+ModifierValidationAsync: <input type="checkbox" (input)="modifierValidationAsync($event.target)">
+
+<table>
+  <tr>
+    <td>value</td>
+    <td>{{ formCtrl.value }}</td>
+  </tr>
+  <tr>
+    <td>valid</td>
+    <td>{{ formCtrl.valid }}</td>
+  </tr>
+  <tr>
+    <td>invalid</td>
+    <td>{{ formCtrl.invalid }}</td>
+  </tr>
+  <tr>
+    <td>pending</td>
+    <td>{{ formCtrl.pending }}</td>
+  </tr>
+  <tr>
+    <td>touched</td>
+    <td>{{ formCtrl.touched }}</td>
+  </tr>
+  <tr>
+    <td>untouched</td>
+    <td>{{ formCtrl.untouched }}</td>
+  </tr>
+  <tr>
+    <td>pristine</td>
+    <td>{{ formCtrl.pristine }}</td>
+  </tr>
+  <tr>
+    <td>dirty</td>
+    <td>{{ formCtrl.dirty }}</td>
+  </tr>
+  <tr>
+    <td>nombre de modifications</td>
+    <td>{{ compteurModification }}</td>
+  </tr>
+  <tr>
+    <td>erreurs</td>
+    <td>
+      <ul>
+        <li *ngFor="let erreur of formCtrl.errors  | keyvalue">
+          {{ erreur | json }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>

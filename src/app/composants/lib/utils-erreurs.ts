@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 
-export function getFormValidationErrors(form: FormGroup) {
+export function getFormValidationErrors(form: FormGroup): {control: string, error: string, value: string}[] {
   const result: any  = [];
   Object.keys(form.controls).forEach(key => {
     const formProperty = form.get(key);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EntreeTexteComponent } from './composants/commun/entree-texte/entree-texte.component';
 import { FormulaireComponent } from './composants/formulaire/formulaire.component';
@@ -12,7 +12,8 @@ import { FormulaireComponent } from './composants/formulaire/formulaire.componen
     FormulaireComponent,
     EntreeTexteComponent,
     FormsModule
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
 

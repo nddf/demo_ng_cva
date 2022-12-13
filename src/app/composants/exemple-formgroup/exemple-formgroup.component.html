@@ -1,0 +1,75 @@
+<div [formGroup]="form">
+ <input type="text" formControlName="nom">
+ <input type="text" formControlName="prenom">
+</div>
+<button type="button" (click)="form.setValue({nom: 'Tremblay', prenom: 'Jean'}, {emitEvent: false})">Assigner Jean Tremblay</button><br>
+ModifierValidationAsync: <input type="checkbox" (input)="modifierValidationAsync($event.target)">
+
+<table>
+  <tr>
+    <td>value</td>
+    <td>{{ form.value | json}}</td>
+  </tr>
+  <tr>
+    <td>valid</td>
+    <td>{{ form.valid }}</td>
+  </tr>
+  <tr>
+    <td>invalid</td>
+    <td>{{ form.invalid }}</td>
+  </tr>
+  <tr>
+    <td>pending</td>
+    <td>{{ form.pending }}</td>
+  </tr>
+  <tr>
+    <td>touched</td>
+    <td>{{ form.touched }}</td>
+  </tr>
+  <tr>
+    <td>untouched</td>
+    <td>{{ form.untouched }}</td>
+  </tr>
+  <tr>
+    <td>pristine</td>
+    <td>{{ form.pristine }}</td>
+  </tr>
+  <tr>
+    <td>dirty</td>
+    <td>{{ form.dirty }}</td>
+  </tr>
+  <tr>
+    <td>nombre de modifications</td>
+    <td>{{ compteurModification }}</td>
+  </tr>
+  <tr>
+    <td>erreurs form</td>
+    <td>
+      <ul>
+        <li *ngFor="let erreur of form.errors | keyvalue">
+          {{ erreur | json }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>erreurs nom</td>
+    <td>
+      <ul>
+        <li *ngFor="let erreur of form.get('nom')!.errors | keyvalue">
+          {{ erreur | json }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>erreurs prenom</td>
+    <td>
+      <ul>
+        <li *ngFor="let erreur of form.get('prenom')!.errors | keyvalue">
+          {{ erreur | json }}
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
